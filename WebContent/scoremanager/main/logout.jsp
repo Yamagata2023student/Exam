@@ -17,7 +17,7 @@
 			</div>
 			<div class="lh-lg row" style="margin-top: 4rem;">
 				<div class="mx-3 col-2">
-					<a href="../Login.action">ログイン</a>
+					<a href="/exam/scoremanager/Login.action">ログイン</a>
 				</div>
 			</div>
 		</section>
