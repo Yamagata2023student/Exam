@@ -31,7 +31,7 @@ public class StudentCreateAction extends Action {
 		List<String> list = cNumDao.filter(teacher.getSchool());// ログインユーザーの学校コードをもとにクラス番号の一覧を取得
 
 		//ビジネスロジック 4
-		for (int i = year - 10; i < year + 10; i++) {
+			for (int i = year - 10; i < year + 10; i++) {
 			entYearSet.add(i);
 		}// 現在を起点に前後10年をリストに追加
 
