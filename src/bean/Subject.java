@@ -13,6 +13,8 @@ public class Subject implements Serializable {
 	 */
 	private String name;
 
+	private boolean isAttend;
+
 	/**
 	 * 所属校:School
 	 */
@@ -42,4 +44,14 @@ public class Subject implements Serializable {
 	public void setSchool(School school) {
 		this.school = school;
 	}
+
+	public boolean isAttend() {
+		return isAttend();
+	}
+
+	public void setAttend(boolean isAttend) {
+		this.isAttend = isAttend;
+	}
+
+
 }
