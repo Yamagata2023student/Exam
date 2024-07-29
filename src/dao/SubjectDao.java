@@ -36,7 +36,6 @@ public class SubjectDao extends Dao {
 			// 学生インスタンスに検索結果をセット
 			subject.setCd(rSet.getString("cd"));
 			subject.setName(rSet.getString("name"));
-			subject.setAttend(rSet.getBoolean("is_attend"));
 			// 学校フィールドには学校コードで検索した学校インスタンスをセット
 			subject.setSchool(schoolDao.get(rSet.getString("school_cd")));
 		} else {
@@ -134,12 +133,10 @@ public class SubjectDao extends Dao {
 				// 学生が存在しなかった場合
 				// プリペアードステートメンにINSERT文をセット
 				statement = connection.prepareStatement(
-						"insert into student(cd, name,) values(?, ?)");
+						"insert into subject(cd, name,) values(?, ?)");
 				// プリペアードステートメントに値をバインド
 				statement.setString(1, subject.getCd());
 				statement.setString(2, subject.getName());
-				statement.setBoolean(3, subject.isAttend());
-				statement.setString(4, subject.getSchool().getCd());
 			} else {
 				// 学生が存在した場合
 				// プリペアードステートメントにUPDATE文をセット
@@ -147,8 +144,6 @@ public class SubjectDao extends Dao {
 						.prepareStatement("update subject set name=?");
 				// プリペアードステートメントに値をバインド
 				statement.setString(1, subject.getName());
-				statement.setBoolean(2, subject.isAttend());
-				statement.setString(3, subject.getCd());
 			}
 
 			// プリペアードステートメントを実行

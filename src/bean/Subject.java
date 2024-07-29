@@ -45,13 +45,7 @@ public class Subject implements Serializable {
 		this.school = school;
 	}
 
-	public boolean isAttend() {
-		return isAttend();
-	}
 
-	public void setAttend(boolean isAttend) {
-		this.isAttend = isAttend;
-	}
 
 
 }
