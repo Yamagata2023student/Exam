@@ -1,14 +1,51 @@
 package scoremanager.test;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import bean.Subject;
+import bean.Teacher;
+import dao.ClassNumDao;
+import dao.StudentDao;
+import dao.SubjectDao;
+import tool.Action;
 
 public class TestListAction extends Action {
 
-	public void execute(HttpServletRequest req, HttpServletRespons res) throws Exception {
+	public void execute(
+		HttpServletRequest req, HttpServletResponse res
+	) throws Exception {
+		ClassNumDao cNumDao = new ClassNumDao();
+		SubjectDao sbDao = new SubjectDao();
+		StudentDao sDao = new StudentDao();
+		HttpSession session = req.getSession(true);
+		Teacher teacher = (Teacher)session.getAttribute("user");
+		LocalDate todayDate = LocalDate.now();
+		int year = todayDate.getYear();
+		List<Integer> entYearSet = new ArrayList<>();
+		List<Integer> numSet = new ArrayList<>();
 
-		Httpsession session=request, getSession();//セッション
+		List<String> list = cNumDao.filter(teacher.getSchool());
+		List<Subject> subjects = sbDao.filter(teacher.getSchool());
 
+		for (int i = year - 10; i < year + 10; i++) {
+			entYearSet.add(i);
+		}
 
-		return "test_list.java";
+		for (int i = 1; i <= 2; i++) {
+			numSet.add(i);
+		}
+
+		req.setAttribute("class_num_set", list);
+		req.setAttribute("ent_year_set", entYearSet);
+		req.setAttribute("subject", subjects);
+		req.setAttribute("num_set", numSet);
+
+		req.getRequestDispatcher("test_list.jsp").forward(req, res);
 	}
 }
