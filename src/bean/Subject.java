@@ -13,7 +13,6 @@ public class Subject implements Serializable {
 	 */
 	private String name;
 
-	private boolean isAttend;
 
 	/**
 	 * 所属校:School

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.School;
-import bean.Student;
 import bean.Subject;
 
 public class SubjectDao extends Dao {
@@ -70,9 +69,9 @@ public class SubjectDao extends Dao {
 	private String baseSql = "select * from subject where school_cd=? ";
 
 
-	public List<Student> filter(School school) throws Exception {
+	public List<Subject> filter(School school) throws Exception {
 		// リストを初期化
-		List<Student> list = new ArrayList<>();
+		List<Subject> list = new ArrayList<>();
 		// コネクションを確立
 		Connection connection = getConnection();
 		// プリペアードステートメント
@@ -133,10 +132,11 @@ public class SubjectDao extends Dao {
 				// 学生が存在しなかった場合
 				// プリペアードステートメンにINSERT文をセット
 				statement = connection.prepareStatement(
-						"insert into subject(cd, name,) values(?, ?)");
+						"insert into subject(school_cd, cd, name) values(?, ?, ?)");
 				// プリペアードステートメントに値をバインド
-				statement.setString(1, subject.getCd());
-				statement.setString(2, subject.getName());
+				statement.setString(1,subject.getSchool().getCd());
+				statement.setString(2, subject.getCd());
+				statement.setString(3, subject.getName());
 			} else {
 				// 学生が存在した場合
 				// プリペアードステートメントにUPDATE文をセット

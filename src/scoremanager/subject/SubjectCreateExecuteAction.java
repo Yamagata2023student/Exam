@@ -35,12 +35,11 @@ public class SubjectCreateExecuteAction extends Action{
 
 
 		//DBからデータ取得 3
-		subject = sDao.get(cd, null);// 学生番号から学生インスタンスを取得
+		subject = sDao.get(cd, null);
 		// ログインユーザーの学校コードをもとにクラス番号の一覧を取得
 		List<String> list = cNumDao.filter(teacher.getSchool());
 
-
-		if (cd.length() < 2 || cd.length() > 4) {
+		if (cd.length() <= 2 || 4 <= cd.length() ) {
 			errors.put("cd", "科目コードは３文字で入力してください");
 		} else {
 			if (subject == null) {// 科目コードが未登録だった場合
@@ -65,9 +64,9 @@ public class SubjectCreateExecuteAction extends Action{
 			req.setAttribute("errors", errors);
 			req.setAttribute("cd", cd);
 			req.setAttribute("name", name);
-			req.getRequestDispatcher("/exam/scoremanager/subject/subject_create.jsp").forward(req, res);
+			req.getRequestDispatcher("/scoremanager/subject/subject_create.jsp").forward(req, res);
 			return;
 		}
-		req.getRequestDispatcher("/exam/scoremanager/subject/subject_create_done.jsp").forward(req, res);
+		req.getRequestDispatcher("/scoremanager/subject/subject_create_done.jsp").forward(req, res);
 	}
 }
