@@ -22,7 +22,7 @@
 				<div class="mx-3 py-2">
 					<div class="my-3">
 						<label class="form-label" for="subject-no-input">科目コード</label>
-						<input class="form-control" type="text" id="subject-no-input" name="cd"
+						<input class="form-control" type="text" id="subject-cd-input" name="cd"
 							placeholder="科目コードを入力してください" maxlength="10" value="${cd}" required />
 						<div class="mt-2 text-warning">${errors.get("cd")}</div>
 					</div>

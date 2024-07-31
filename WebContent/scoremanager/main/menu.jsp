@@ -22,7 +22,7 @@
 					<div>
 						<div class="">成績管理</div>
 						<div class="">
-							<a href="TestRegist.action">成績登録</a>
+							<a href="/exam/scoremanager/test/TestRegist.action">成績登録</a>
 						</div>
 						<div class="">
 							<a href="/exam/scoremanager/test/TestList.action">成績参照</a>
