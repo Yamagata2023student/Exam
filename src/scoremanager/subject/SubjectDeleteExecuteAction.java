@@ -53,6 +53,6 @@ public class SubjectDeleteExecuteAction extends Action {
 			return;
 		}
 
-		req.getRequestDispatcher("/scoremanager/subject/suject_delete_done.jsp").forward(req, res);
+		req.getRequestDispatcher("/scoremanager/subject/subject_delete_done.jsp").forward(req, res);
 	}
 }

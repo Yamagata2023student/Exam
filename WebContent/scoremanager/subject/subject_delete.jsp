@@ -11,7 +11,7 @@
 
 	<c:param name="content">
 		<section class="me-4">
-			<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">科目情報変更</h2>
+			<h2 class="h3 mb-3 fw-norma bg-secondary bg-opacity-10 py-2 px-4">科目情報削除</h2>
 			<form action = "/exam/scoremanager/subject/SubjectDeleteExecute.action" method="post">
 				<div class="mx-3 py-2">
 
@@ -19,6 +19,14 @@
 					<p>
 						<label id="subject">${name}(${cd})を削除してもよろしいですか</label>
 					</p>
+
+					<input  readonly class="form-control-plaintext ms-3" type="hidden"
+							id="subject-name-input" name="name" value="${name}" />
+
+					<input readonly class="form-control-plaintext ms-3" type="hidden"
+							id="subject-cd-input" name="cd" value="${cd}" />
+
+
 					<div class="mb-3">
 						<div class="mt-2 text-warning">${errors.get("name")}</div>
 					<div class="mt-3">
